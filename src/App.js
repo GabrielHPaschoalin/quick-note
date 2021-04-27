@@ -2,41 +2,62 @@ import React from 'react';
 
 function App() {
 
-  let numeros = [1,2,3,4,5,6.3,7,8,9];
-  
-function clicou() { 
-
-  for(let i=0; i < numeros.length; i++){ // como usar um for
-    console.log("console.log: "+ i); //No navegador: Inspecioanar elemento->console->debugar
+  const endereco = { //Isso é um objeto
+    
+    rua: "Caio Martins",
+    numero: 610
   }
 
-  //Não retorna nada
-  numeros.forEach((elemento, index) =>  {console.log("forEach:  "+elemento + ":)" + index)});
+  const pessoa = { // Isso é um objeto
+
+    key: "value", // Todo objeto possui uma key e um value:
+
+    nome: "Gabriel",
+    idade: 18,
+    altura: 1.85,
+    endereco: endereco,
+    notasFaculdade : [10,2,{materia: "calculo", nota:2},10,2],
+
+  }
+
+
+  function clicou() { 
+
+    let key = Object.keys(pessoa); 
+
+    //console.log ( pessoa[key]);//Acessar pessoa na posição nome.
   
-  //Duplicar o valor sempre que clicar no botão:
+    key.forEach((element)=> { 
 
-  numeros = numeros.map((elemento) => {
-    return elemento *2; 
-  });
+      console.log(pessoa[element]);
 
-  console.log(numeros);
+    });
+
+    //Formas de alterar o valor da variável:
+    //1º - estática
+    pessoa.idade = 19; //Atribuir de forma dinâmica
+    //2º  - dinâmica
+    key = "idade";
+    pessoa[key] = 19;
+
+    //Criar uma nova categoria no objeto
+    pessoa.comidaFavorita = "Macarrão";
+    
+    //Deletar um campo:
+    delete pessoa.nome;
+    console.log(pessoa);
 
 
+  }
 
-
-
-}
-
-return (
+  return (
     <div>
-      <h1>Hello world</h1>
-      <h1>{numeros[4]} </h1>
+
+      <h1>Hello {pessoa.nome} ! Feliz {pessoa.idade} anos!</h1>
       <button onClick={() => {clicou()}}>Clique aqui</button>
 
     </div>
-  );
-}
-
-
+    );
+  }
 
 export default App;
