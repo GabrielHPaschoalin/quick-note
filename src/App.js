@@ -1,28 +1,37 @@
 import React from 'react';
 
 function App() {
+
+  let numeros = [1,2,3,4,5,6.3,7,8,9];
   
-  let numero = 0;
+function clicou() { 
 
-
-  function clicou(dividir) { //Função para exibir alerta
-    numero++;   
-  
-    let dividido = 0;
-
-    if(dividir === true){
-      dividido = numero/2;
-    }
-
-    alert(numero);
-    alert(dividido);
+  for(let i=0; i < numeros.length; i++){ // como usar um for
+    console.log("console.log: "+ i); //No navegador: Inspecioanar elemento->console->debugar
   }
+
+  //Não retorna nada
+  numeros.forEach((elemento, index) =>  {console.log("forEach:  "+elemento + ":)" + index)});
+  
+  //Duplicar o valor sempre que clicar no botão:
+
+  numeros = numeros.map((elemento) => {
+    return elemento *2; 
+  });
+
+  console.log(numeros);
+
+
+
+
+
+}
 
 return (
     <div>
       <h1>Hello world</h1>
-      <button onClick={() => {clicou(false)}}>+1</button>
-      <button onClick={() => {clicou(true)}}>+1 e divide</button>
+      <h1>{numeros[4]} </h1>
+      <button onClick={() => {clicou()}}>Clique aqui</button>
 
     </div>
   );
