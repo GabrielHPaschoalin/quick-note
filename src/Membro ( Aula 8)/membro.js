@@ -2,7 +2,6 @@ import React from "react";
 
 function Membro(props){//props: recebe os parâmetros de um objeto
     
-    console.log(props);
 
     return(
 

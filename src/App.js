@@ -1,6 +1,7 @@
 import { prettyDOM } from '@testing-library/dom';
 import React from 'react';
-import Membro from './Membro';
+import Membro from './Membro ( Aula 8)';
+import Title from './Title - Aula 8';
 
 const Gabriel = {
   nome: "Gabriel Henrique",
@@ -25,13 +26,11 @@ function App() {
 
   return (
     <div>
-
-      <h1>Membros</h1>
-      
+      <Title title = "Membros" subtitle = "Esses são os membros">
       <Membro membro = {Gabriel}/>
       <Membro membro = {Bruna}/>
       <Membro membro = {Gustavo}/>
-      
+      </Title>
     </div>
     );
 }
