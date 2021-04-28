@@ -3,100 +3,73 @@ import { useState } from "react";
 
 function App() {
 
-  const [membro, setMembro] = useState();
+  const [ingredientes, setIngredientes] = useState([]);
 
-  function handleImputChange(e) {
+  function handleInputChange(e) {
 
-    const key = e.target.name;
+    const value = e.target.value;
+    const newIngredientes = [...ingredientes];
+    const index = ingredientes.indexOf(value)
 
-    const newMembro = { ...membro } //Cópia do objeto
+    //Verificar se já existe o valor, retornando -1 se não existir
+    if (index === -1) 
+      newIngredientes.push(value); // Inserir um valor
+    else  // Ingrediente já existe
+      newIngredientes.splice(index, 1); // Deletar elementos dentro de um vetor
+    setIngredientes(newIngredientes);
 
-    newMembro[key] = e.target.value;
-
-    setMembro(newMembro);
-    console.log(newMembro)
   }
 
   return (
     <div>
 
-      <h1>Novo Membro</h1>
-
-      <input //Campo nome
-        type="text"
-        placeholder="Nome"
-        name="nome"
-        onChange={handleImputChange}
-      />
-      <br />
-
-      <input //Engenharia de controle e automação
-        id="ECA"
-        type="radio"
-        name="curso"
-        value="Engenharia de Controle e Automação"
-        onChange={handleImputChange}
-      />
-
-      <label htmlFor="ECA"> Engenharia de Controle e Automação </label>
-
-      <br />
-
-      <input // Campo Engenharia elétrica
-        id="EE"
-        type="radio"
-        name="curso"
-        value="Engenharia Elétrica"
-        onChange={handleImputChange}
-      />
-
-      <label htmlFor="EE">Engenharia Elétrica</label>
-
-      <br />
-
-      <input //Idade
-        type="text"
-        placeholder="Idade"
-        name="idade"
-        onChange={handleImputChange}
-      />
-
-      <br />
-
-      <input //Estado
-        type="text"
-        placeholder="Estado"
-        onChange={handleImputChange}
-
-      />
+      <h1>Ingredientes da pizza</h1>
 
       <input
-        id="Diurno"
-        type="radio"
-        name="turno"
-        value="Diurno"
-        onChange={handleImputChange}
+        id="Pepperoni"
+        type="checkbox"
+        value="Pepperoni"
+        onChange={handleInputChange}
       />
-      <label htmlFor="Diurno"> Diurno </label>
+      <label htmlFor="Pepperoni">Pepperoni</label> <br />
 
       <input
-        id="Noturno"
-        type="radio"
-        name="turno"
-        value="Noturno"
-        onChange={handleImputChange}
+        id="Queijo"
+        type="checkbox"
+        value="Queijo"
+        onChange={handleInputChange}
       />
-      <label htmlFor="Noturno"> Noturno </label>
+      <label htmlFor="Queijo">Queijo</label> <br />
+
+      <input
+        id="Frango"
+        type="checkbox"
+        value="Frango"
+        onChange={handleInputChange}
+      />
+      <label htmlFor="Frango">Frango</label> <br />
+
+      <input
+        id="Catupiry"
+        type="checkbox"
+        value="Catupiry"
+        onChange={handleInputChange}
+      />
+      <label htmlFor="Catupiry">Catupiry</label> <br />
+
+      <input
+        id="Molho de tomate"
+        type="checkbox"
+        value="Molho de tomate"
+        onChange={handleInputChange}
+      />
+      <label htmlFor="Molho de tomate">Molho de tomate</label> <br />
 
       <br />
 
-      <input //Cidade
-        type="text"
-        placeholder="Cidade"
-        name="cidade"
-        onChange={handleImputChange}
+      <h2>Selecionados:</h2>
+      <p>{ingredientes.join(" || ")}</p>
 
-      />
 
     </div>
   );
