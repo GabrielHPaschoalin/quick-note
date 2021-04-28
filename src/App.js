@@ -3,12 +3,19 @@ import { useState } from "react";
 
 function App() {
 
-    const [nome, setNome] = useState(); //Retorna um vetor com 2 parâmetros
-  const [curso, setCurso] = useState();
-  const [idade, setIdade] = useState();
-  const [Cidade, setCidade] = useState();
-  const [Estado, setEstado] = useState();
-  const [Turno, setTurno] = useState();
+  const [membro, setMembro] = useState();
+
+  function handleImputChange(e) {
+
+    const key = e.target.name;
+
+    const newMembro = { ...membro } //Cópia do objeto
+
+    newMembro[key] = e.target.value;
+
+    setMembro(newMembro);
+    console.log(newMembro)
+  }
 
   return (
     <div>
@@ -18,7 +25,8 @@ function App() {
       <input //Campo nome
         type="text"
         placeholder="Nome"
-        onChange={(event) => setNome(event.target.value)}
+        name="nome"
+        onChange={handleImputChange}
       />
       <br />
 
@@ -27,7 +35,7 @@ function App() {
         type="radio"
         name="curso"
         value="Engenharia de Controle e Automação"
-        onChange={(e) => setCurso(e.target.value)}
+        onChange={handleImputChange}
       />
 
       <label htmlFor="ECA"> Engenharia de Controle e Automação </label>
@@ -39,7 +47,7 @@ function App() {
         type="radio"
         name="curso"
         value="Engenharia Elétrica"
-        onChange={(e) => setCurso(e.target.value)}
+        onChange={handleImputChange}
       />
 
       <label htmlFor="EE">Engenharia Elétrica</label>
@@ -49,7 +57,8 @@ function App() {
       <input //Idade
         type="text"
         placeholder="Idade"
-        onChange={(event) => setIdade(event.target.value)}
+        name="idade"
+        onChange={handleImputChange}
       />
 
       <br />
@@ -57,7 +66,7 @@ function App() {
       <input //Estado
         type="text"
         placeholder="Estado"
-        onChange={(e) => setEstado(e.target.value)}
+        onChange={handleImputChange}
 
       />
 
@@ -66,7 +75,7 @@ function App() {
         type="radio"
         name="turno"
         value="Diurno"
-        onChange={(e) => setTurno(e.target.value)}
+        onChange={handleImputChange}
       />
       <label htmlFor="Diurno"> Diurno </label>
 
@@ -75,7 +84,7 @@ function App() {
         type="radio"
         name="turno"
         value="Noturno"
-        onChange={(e) => setTurno(e.target.value)}
+        onChange={handleImputChange}
       />
       <label htmlFor="Noturno"> Noturno </label>
 
@@ -84,18 +93,10 @@ function App() {
       <input //Cidade
         type="text"
         placeholder="Cidade"
-        onChange={(e) => setCidade(e.target.value)}
+        name="cidade"
+        onChange={handleImputChange}
 
       />
-
-      <br />
-
-      <p>Nome do membro: {nome}</p>
-      <p>Curso do membro:  {curso}</p>
-      <p>Turno: {Turno}</p>
-      <p>Idade: {idade}</p>
-      <p>Cidade - Estado : {Cidade} - {Estado}</p>
-
 
     </div>
   );
