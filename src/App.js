@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import Selecionados from "./Aula 12/Selecionados"
 
 function App() {
 
@@ -67,8 +68,7 @@ function App() {
 
       <br />
 
-      <h2>Selecionados:</h2>
-      <p>{ingredientes.join(" || ")}</p>
+      <Selecionados selecionados = {ingredientes} />
 
 
     </div>
