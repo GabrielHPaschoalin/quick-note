@@ -1,33 +1,42 @@
 import React, { useEffect, useState } from "react";
 
-function Selecionados({ selecionados }){
+function Selecionados({ selecionados }) {
 
-const [ingredientes, setIngredientes] = useState(selecionados);
-   
-const [showWarning, setShowWarning] = useState(false);
-useEffect(()=>{
-    const newIngredientes = [];
+    const [ingredientes, setIngredientes] = useState(selecionados);
 
-    for (let i = 0; i < selecionados.length && i < 3; i++) {
-        const element = selecionados[i];
-        newIngredientes.push(element);
-    }
+    const [showWarning, setShowWarning] = useState(false);
+    useEffect(() => {
+        const newIngredientes = [];
 
-    setIngredientes(newIngredientes);
+        for (let i = 0; i < selecionados.length && i < 3; i++) {
+            const element = selecionados[i];
+            newIngredientes.push(element);
+        }
 
-    setShowWarning(selecionados.length >= 3); // Indica se é false ou true
+        setIngredientes(newIngredientes);
+
+        setShowWarning(selecionados.length >= 3); // Indica se é false ou true
 
 
-}, [selecionados]) // O vetor é o que será monitorado
+    }, [selecionados]) // O vetor é o que será monitorado
 
-    return(
+    return (
         <div>
             <h3>Selecionados:</h3>
-            <p>{ingredientes.join(" ")}</p>
-            {showWarning && <h4>Número máximo de ingredientes atingido</h4>} 
+            <ul>
+                {ingredientes.map((ingrediente, index)=>{
+                    return(
+                        <li key = {index}>{ingrediente}</li>
+                    );
+                })}
+
+            </ul>
+            {showWarning && <h4>Número máximo de ingredientes atingido</h4>}
         </div>
     );
-    //Linha 22: Se showWarning for verdadeiro, exibe a mensagem
+    //{showWarning && <h4>Número máximo de ingredientes atingido</h4>}:
+    // Se showWarning for verdadeiro, exibe a mensagem
+    // <ul> - lista
 }
 
 export default Selecionados;
